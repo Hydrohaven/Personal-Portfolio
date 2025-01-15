@@ -1,30 +1,48 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
 
 <!--
 WRITTEN BY: Joshua Micah Sullivan
 EMAIL: jmsulli3@uci.edu
 -->
 
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="author" content="Your name here">
-    <meta name="description" content="description of your page">
-    <!-- you would link to an external stylesheet here! -->
-    <!-- you would also link to Bootstrap here! -->
-    <title>Joshua Sullivan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Joshua Micah Sullivan">
+    <meta name="description" content="My personal portfolio! Detailing my achievements and experiences!">
+    <title>Personal Portfolio</title>
     <link rel="stylesheet" href="style.css"></link>
+    
+    <!-- CDNs (Content Delivery Network) - Used to avoid installing packages and libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-    <div class="bg-green-500 text-gray">
-        ewiuhqwjewqjbjwevfjwbvfwefwef
-    </div>
-    
-    <p>
-        <a href="http://validator.w3.org/check?uri=referer">
-            W3C validator
-        </a>
-    </p>
+    <div id="root"></div>
+    <script type="text/babel" src="src/components/navbar.jsx"></script>
+    <script type="text/babel" src="src/components/header.jsx"></script>
+    <script type="text/babel" src="src/components/test.jsx"></script>
+
+    <script type="text/babel">
+        const App = () => (
+            <div>
+                <Navbar/>
+                <Header/>
+                <p>Main App Component</p>
+                <Test/>
+                
+
+                <p>
+                    <a href="http://validator.w3.org/check?uri=referer">
+                        W3C validator
+                    </a>
+                </p>
+            </div>
+        );
+        ReactDOM.render(<App/>, document.getElementById('root'));
+    </script>
 </body>
 </html>

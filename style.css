@@ -1,0 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Lexend%20Deca);
+
+:root {
+    --font: "Lexend Deca";
+    --izone: #ef539d;
+}
+
+body {
+    font-family: var(--font);
+}
