@@ -7,9 +7,24 @@
         name="viewport"
         content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
         />
-
+        
+        <!-- CDNs (Content Delivery Network) - Used to avoid installing packages and libraries -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <!-- Import Map for Module Imports -->
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        
+    </head>
+    <body className="m-0 overflow-hidden">
+        <div id="container" className=""></div>
+        <div id="root" className="relative z-10"></div>
+
+        <!-- React Imports -->
+        <script type="text/babel" src="src/components/navbar.jsx"></script>
+        <script type="text/babel" src="src/components/landing.jsx"></script>
+        <script type="text/babel" src="src/components/test.jsx"></script>
+
+        <!-- Three.js Ocean -->
         <script type="importmap">
             {
                 "imports": {
@@ -18,10 +33,25 @@
                 }
             }
         </script>
-    </head>
-    <body className="m-0 overflow-hidden">
-        <div id="container" className="w-full h-full"></div>
 
+        <!-- Priyansh Fluid.js -->
+        <script src="https://cdn.jsdelivr.net/npm/webgl-fluid-custom"></script>
+
+        <!-- Main React Code (App.jsx) -->
+        <script type="text/babel">
+            const App = () => {  
+                return(
+                    <div>
+                        <Navbar/>
+                        <Landing/>
+                    </div>
+                );
+            };
+
+            ReactDOM.render(<App/>, document.getElementById('root'));
+        </script>
+
+        <!-- Three.js Ocean Simulation -- Nothing important is under this, Goes to EOF -->
         <script type="module">
             import * as THREE from 'three';
 
@@ -41,15 +71,16 @@
                 container = document.getElementById('container');
 
                 // Renderer
-                renderer = new THREE.WebGLRenderer();
+                renderer = new THREE.WebGLRenderer(); // creates a canvas element with predispositioned styling
                 renderer.setPixelRatio(window.devicePixelRatio);
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 renderer.toneMapping = THREE.ACESFilmicToneMapping;
                 renderer.toneMappingExposure = 0.5;
+                renderer.domElement.style.position = "absolute"; // changed native position to absolute to make it the background
                 container.appendChild(renderer.domElement);
 
                 // Scene
-                scene = new THREE.Scene();
+                scene = new THREE.Scene(); // like godot scene, consits of many components (water, sky, cube. etc.)
 
                 // Camera
                 camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 20000);
@@ -65,27 +96,28 @@
                     textureWidth: 512,
                     textureHeight: 512,
                     waterNormals: new THREE.TextureLoader().load(
-                        'https://threejs.org/examples/textures/waternormals.jpg',
+                        // weird image used for water textures, could possibly replace with different textures?
+                        'https://threejs.org/examples/textures/waternormals.jpg', 
                         function (texture) {
                             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                         }
                     ),
                     sunDirection: new THREE.Vector3(),
                     sunColor: 0xffffff,
-                    waterColor: 0x001e0f,
-                    distortionScale: 3.7,
-                    fog: scene.fog !== undefined,
+                    waterColor: 0x001e0f, // not sure how much this affects the rainbowness of waternormals.jpg
+                    distortionScale: 3.7, // = how much water distorts objects reflected on it (aka. will make cube more blurry)
+                    fog: scene.fog !== undefined, // TODO: look into this, no clue what this means
                 });
 
-                water.rotation.x = -Math.PI / 2;
+                water.rotation.x = -Math.PI / 2; // TODO: play around with this, not sure how this works
                 scene.add(water);
 
                 // Sky
                 const sky = new Sky();
                 sky.scale.setScalar(10000);
                 scene.add(sky);
-
-                const skyUniforms = sky.material.uniforms;
+                
+                const skyUniforms = sky.material.uniforms; // not sure how uniforms work yet
                 skyUniforms['turbidity'].value = 10;
                 skyUniforms['rayleigh'].value = 2;
                 skyUniforms['mieCoefficient'].value = 0.005;
@@ -120,72 +152,79 @@
                 }
 
                 updateSun();
-
+                
+                // Render Cube Mesh Object, wonder if I could get a 3D Mesh of my name, I'm sure there's an import/library
                 // const geometry = new THREE.BoxGeometry( 30, 30, 30 );
-				// const material = new THREE.MeshStandardMaterial( { roughness: 0 } );
+				// const material = new THREE.MeshStandardMaterial( { roughness: 0 } ); // TODO: mess with this
 
 				// mesh = new THREE.Mesh( geometry, material );
 				// scene.add( mesh );
 
                 // Orbit Controls
                 controls = new OrbitControls(camera, renderer.domElement);
-                controls.maxPolarAngle = Math.PI * 0.495;
+                controls.maxPolarAngle = Math.PI * 0.495; // TODO: Mess with next four attributes for animation camera work
                 controls.target.set(0, 10, 0);
-                controls.minDistance = 40.0;
+                controls.minDistance = 40.0; 
                 controls.maxDistance = 200.0;
-                controls.autoRotate = true; // added
+                controls.autoRotate = true; // Default true for the sake of user experience
                 controls.autoRotateSpeed = 0.80; // Default is 2.0
                 controls.update();
                 console.log(controls)
 
+
+                // FPS Stats, not sue what other stats are available
                 // stats = new Stats();
 				// container.appendChild( stats.dom );
 
-                // GUI 
+                // GUI -- Admin Tool: Used to play around with component attributes
                 const gui = new GUI();
 
                 const folderSky = gui.addFolder('Sky');
                 folderSky.add(parameters, 'elevation', 0, 180, 0.1).onChange(updateSun);
-                folderSky.add( parameters, 'azimuth', -180, 180, 0.1 ).onChange( updateSun );
+                folderSky.add(parameters, 'azimuth', -180, 180, 0.1).onChange( updateSun );
 				folderSky.open();
-
-                const waterUniforms = water.material.uniforms;
+        
+                const waterUniforms = water.material.uniforms; // TODO: Look into uniforms
                 const folderWater = gui.addFolder('Water');
-                folderWater.add( waterUniforms.distortionScale, 'value', 0, 8, 0.1 ).name( 'distortionScale' );
-				folderWater.add( waterUniforms.size, 'value', 0.1, 10, 0.1 ).name( 'size' );
+                folderWater.add(waterUniforms.distortionScale, 'value', 0, 8, 0.1).name( 'distortionScale' );
+                folderWater.add(waterUniforms.size, 'value', 0.1, 10, 0.1).name( 'size' );
                 folderWater.open();
-                // waterUniforms.size = 10;
+                // TODO: Change the default size of water, look into performance affects as well
+                //       Worse case scenario, make minimum value 10 or something
+                // waterUniforms.size = 10; // does not work, crashes program i think
 
+                // Pretty sick built-in feature, was about to make my own auto rotate orbit logic
                 const folderOrbit = gui.addFolder('Orbit');
-                folderOrbit.add(controls, 'autoRotateSpeed', 0, 5, 0.1).name('autoRotateSpeed'); // Adjust auto-rotation speed
                 folderOrbit.add(controls, 'autoRotate').name('Enable Auto Rotate'); // Toggle auto-rotation
+                folderOrbit.add(controls, 'autoRotateSpeed', 0, 5, 0.1).name('autoRotateSpeed'); // Adjust auto-rotation speed
                 folderOrbit.open();
-
-				
 
                 // Resize Listener
                 window.addEventListener('resize', onWindowResize);
             }
-
+            
+            // Limits scene to initial window length and height? If so thats very convenient for me
             function onWindowResize() {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
             }
-
+            
+            // Game Engine function that's called every frame i think? 
             function animate() {
                 requestAnimationFrame(animate);
+                // Constantly rotates cube and moves it up and down, pretty sick
                 // const time = performance.now() * 0.001;
 
                 // mesh.position.y = Math.sin( time ) * 20 + 5;
                 // mesh.rotation.x = time * 0.5;
                 // mesh.rotation.z = time * 0.51;
                 
-                controls.update();
-                water.material.uniforms['time'].value += 1.0 / 60.0;
+                controls.update(); // Updates user changed attributes every frame 
+                water.material.uniforms['time'].value += 1.0 / 60.0; // 1 second / 60 frames -- Maybe? 
                 renderer.render(scene, camera);
                 
-                // stats.update();
+                // stats.update(); // Updates FPS counter per second
             }
         </script>
     </body>
