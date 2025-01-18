@@ -1,4 +1,4 @@
-const { useEffect } = React;
+const { useEffect, useState } = React;
 
 const generateUniqueId = (() => {
     let count = 0;
@@ -6,6 +6,8 @@ const generateUniqueId = (() => {
 })();
 
 const Landing = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
     const CogContainer = ({ positionClass }) => {
         const cog1Id = generateUniqueId();
         const cog2Id = generateUniqueId();
@@ -56,20 +58,52 @@ const Landing = () => {
         );
     };
 
+    useEffect(() => {
+        const handleElevationUpdate = (event) => {
+            if (event.detail.elevation >= 3) {
+                setIsVisible(true); // Show the element when elevation >= 5
+            }
+        };
+        
+        window.addEventListener('elevationReached', handleElevationUpdate);
+
+        return () => {
+            window.removeEventListener('elevationReached', handleElevationUpdate); // Cleanup listener
+        };
+    }, []);
+    
+    const handleScrollDown = () => {
+        const currentScroll = window.scrollY || document.documentElement.scrollTop;
+        const nextScroll = currentScroll + window.innerHeight;
+
+        window.scrollTo({
+            top: nextScroll,
+            behavior: 'smooth',
+        });
+    };
 
     return (
-        <div className="relative w-screen h-screen overflow-hidden">
+        <div className="relative w-full h-screen overflow-hidden">
             {/* Background Cogs */}
             {/* <CogContainer positionClass="top-10 left-10" /> */}
             {/* <CogContainer positionClass="top-60 left-10" /> */}
 
             {/* Main Content */}
-            <div className="relative flex justify-center items-center text-center w-full h-full z-10 text-white hidden">
-                <div className="text-3xl">
-                    <p className="text-7xl">Joshua Micah Sullivan</p>
-                    <p>Incoming STEP Intern @ Google</p>
+            <div className={`relative flex flex-col justify-center items-center text-center w-full h-full z-10 text-blue-100 transition-opacity duration-1000
+                            ${(isVisible) ? 'opacity-100' : 'opacity-0 invisible'}`}>
+                <div className="text-xl md:text-3xl">
+                    <p className="text-3xl md:text-8xl font-bold">Joshua Micah Sullivan</p>
+                    <p className="text-shadow-lg">Incoming STEP Intern @ Google</p>
                     <p>Computer Science @ UCI</p>
+
                 </div>
+
+                <img 
+                    src="img/downarrow.svg"
+                    alt="down arrow for portfolio" 
+                    className="w-10 h-10 absolute bottom-24 animate-bounce cursor-pointer"
+                    onClick={handleScrollDown}
+                />
             </div>
         </div>
     );

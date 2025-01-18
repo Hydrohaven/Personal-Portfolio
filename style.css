@@ -5,6 +5,11 @@
     --izone: #ef539d;
 }
 
-body {
-    font-family: var(--font);
+html {
+    /* overflow-y: scroll;  */
+    scrollbar-gutter: stable;
 }
+
+/* body {
+    font-family: 'Lexend Deca';
+} */
