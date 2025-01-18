@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<!--
+WRITTEN BY: Joshua Micah Sullivan
+EMAIL: jmsulli3@uci.edu
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Joshua Micah Sullivan">
+    <meta name="description" content="My personal portfolio! Detailing my achievements and experiences!">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CDNs (Content Delivery Network) - Used to avoid installing packages and libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- React Imports -->
+    <script type="text/babel" src="src/components/navbar.jsx"></script>
+    <script type="text/babel" src="src/components/landing.jsx"></script>
+    <script type="text/babel" src="src/components/test.jsx"></script>
+
+    <!-- Three.js Ocean -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.150.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <!-- Priyansh Fluid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/webgl-fluid-custom"></script>
+    <script>
+        
+    </script>
+    
+    <script type="text/babel">
+        const App = () => {
+            return(
+                <div>
+                    <Navbar/>
+                    <Landing/>
+                    <div>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>    
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>    
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>    
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                        <h1>Hello</h1>
+                    </div>
+                </div>
+            );
+        };
+
+        
+        ReactDOM.render(<App/>, document.getElementById('root'));
+    </script>
+    <!-- <p><a href="http://validator.w3.org/check?uri=referer">W3C validator</a></p> -->
+</body>
+</html>

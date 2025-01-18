@@ -1,90 +1,237 @@
 <!DOCTYPE html>
-
-<!--
-WRITTEN BY: Joshua Micah Sullivan
-EMAIL: jmsulli3@uci.edu
--->
-
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Joshua Micah Sullivan">
-    <meta name="description" content="My personal portfolio! Detailing my achievements and experiences!">
-    <title>Personal Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- CDNs (Content Delivery Network) - Used to avoid installing packages and libraries -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
-<body>
-    <div id="root"></div>
-    <!-- React Imports -->
-    <script type="text/babel" src="src/components/navbar.jsx"></script>
-    <script type="text/babel" src="src/components/landing.jsx"></script>
-    <script type="text/babel" src="src/components/test.jsx"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Joshua Micah Sullivan">
+        <meta name="description" content="My personal portfolio! Detailing my achievements and experiences!">
+        <title>Personal Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        
+        <!-- CDNs (Content Delivery Network) - Used to avoid installing packages and libraries -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Three.js Ocean -->
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js",
-                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.150.0/examples/jsm/"
+        <!-- Three.js Ocean -->
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.150.0/examples/jsm/"
+                }
             }
-        }
-    </script>
+        </script>
 
-    <!-- Priyansh Fluid.js -->
-    <script src="https://cdn.jsdelivr.net/npm/webgl-fluid-custom"></script>
-    <script>
-        
-    </script>
-    
-    <script type="text/babel">
-        const App = () => {
-            return(
-                <div>
-                    <Navbar/>
-                    <Landing/>
+        <!-- Priyansh Fluid.js -->
+        <script src="https://cdn.jsdelivr.net/npm/webgl-fluid-custom"></script>
+    </head>
+    <body className="m-0 overflow-hidden"> <!-- May not need this tailwindcss -->
+        <!-- React Imports -->
+        <script type="text/babel" src="src/components/navbar.jsx"></script>
+        <script type="text/babel" src="src/components/landing.jsx"></script>
+
+        <!-- Rendered Divs -->
+        <div id="ocean"></div> <!-- div that ocean is rendered into -->
+        <div id="root"></div> <!-- div that react app is rendered into -->
+        <!-- <p><a href="http://validator.w3.org/check?uri=referer">W3C validator</a></p> -->
+
+        <!-- Main React Code, Main Work Station (App.jsx) -->
+        <script type="text/babel">
+            const App = () => {  
+                return(
                     <div>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>    
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>    
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>    
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
-                        <h1>Hello</h1>
+                        <Navbar/>
+                        <Landing/>
                     </div>
-                </div>
-            );
-        };
+                );
+            };
 
+            ReactDOM.render(<App/>, document.getElementById('root'));
+        </script>
+
+
+
+        <!-- Three.js Ocean Simulation - Nothing important is under this, Goes to EOF -->
+        <script type="module">
+            import * as THREE from 'three';
+
+            import Stats from 'three/addons/libs/stats.module.js';
+            import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+            import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+            import { Water } from 'three/addons/objects/Water.js';
+            import { Sky } from 'three/addons/objects/Sky.js';
+
+            let container, camera, scene, renderer, water, sun;
+            let stats, controls, mesh;
+
+            init();
+            animate();
+
+            function init() {
+                container = document.getElementById('ocean');
+
+                // Renderer
+                renderer = new THREE.WebGLRenderer(); // creates a canvas element with predispositioned styling
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.toneMapping = THREE.ACESFilmicToneMapping;
+                renderer.toneMappingExposure = 0.5;
+                renderer.domElement.style.position = "absolute"; // changed native position to absolute to make it the background
+                container.appendChild(renderer.domElement);
+
+                // Scene
+                scene = new THREE.Scene(); // like godot scene, consits of many components (water, sky, cube. etc.)
+
+                // Camera
+                camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 20000);
+                camera.position.set(30, 30, 100);
+
+                // Sun
+                sun = new THREE.Vector3();
+
+                // Water
+                const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
+                const waterShaders = ['img/waternormals.jpg', 'img/cartoonwater.png'];
+                let color = '000f1e'; // Good Blue = 000f1e
+                color = Number('0x'+color); // color is a number (hex number), not a string
+
+                water = new Water(waterGeometry, {
+                    textureWidth: 512,
+                    textureHeight: 512,
+                    waterNormals: new THREE.TextureLoader().load(
+                        // weird image used for water textures, could possibly replace with different textures?
+                        waterShaders[0], 
+                        function (texture) {
+                            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                        }
+                    ),
+                    sunDirection: new THREE.Vector3(),
+                    sunColor: 0xffffff,
+                    waterColor: color, // Original (Green) = 001e0f 
+                    distortionScale: 3.7, // = how much water distorts objects reflected on it (aka. will make cube more blurry)
+                    fog: scene.fog !== undefined, // TODO: look into this, no clue what this means
+                });
+
+                water.rotation.x = -Math.PI / 2; // TODO: play around with this, not sure how this works
+                scene.add(water);
+
+                // Sky
+                const sky = new Sky();
+                sky.scale.setScalar(10000);
+                scene.add(sky);
+                
+                const skyUniforms = sky.material.uniforms; // not sure how uniforms work yet
+                skyUniforms['turbidity'].value = 10;
+                skyUniforms['rayleigh'].value = 2;
+                skyUniforms['mieCoefficient'].value = 0.005;
+                skyUniforms['mieDirectionalG'].value = 0.8;
+
+                const parameters = {
+                    elevation: 2,
+                    azimuth: 180,
+                };
+
+                const pmremGenerator = new THREE.PMREMGenerator( renderer );
+				const sceneEnv = new THREE.Scene();
+
+                let renderTarget;
+
+                function updateSun() {
+                    const phi = THREE.MathUtils.degToRad(90 - parameters.elevation);
+                    const theta = THREE.MathUtils.degToRad(parameters.azimuth);
+
+                    sun.setFromSphericalCoords(1, phi, theta);
+
+                    sky.material.uniforms['sunPosition'].value.copy(sun);
+                    water.material.uniforms['sunDirection'].value.copy(sun).normalize();
+
+                    if ( renderTarget !== undefined ) renderTarget.dispose();
+
+					sceneEnv.add( sky );
+					renderTarget = pmremGenerator.fromScene( sceneEnv );
+					scene.add( sky );
+
+					scene.environment = renderTarget.texture;
+                }
+
+                updateSun();
+                
+                // Render Cube Mesh Object, wonder if I could get a 3D Mesh of my name, I'm sure there's an import/library
+                // const geometry = new THREE.BoxGeometry( 30, 30, 30 );
+				// const material = new THREE.MeshStandardMaterial( { roughness: 0 } ); // TODO: mess with this
+
+				// mesh = new THREE.Mesh( geometry, material );
+				// scene.add( mesh );
+
+                // Orbit Controls
+                controls = new OrbitControls(camera, renderer.domElement);
+                controls.maxPolarAngle = Math.PI * 0.495; // TODO: Mess with next four attributes for animation camera work
+                controls.target.set(0, 10, 0);
+                controls.minDistance = 40.0; 
+                controls.maxDistance = 200.0;
+                controls.autoRotate = true; // Default true for the sake of user experience
+                controls.autoRotateSpeed = 0.4; // Default is 2.0
+                controls.update();
+
+
+                // FPS Stats, not sue what other stats are available
+                // stats = new Stats();
+				// container.appendChild( stats.dom );
+
+                // GUI -- Admin Tool: Used to play around with component attributes
+                const gui = new GUI();
+
+                const folderSky = gui.addFolder('Sky');
+                folderSky.add(parameters, 'elevation', -10, 180, 0.1).onChange(updateSun);
+                folderSky.add(parameters, 'azimuth', -180, 180, 0.1).onChange( updateSun );
+				folderSky.open();
         
-        ReactDOM.render(<App/>, document.getElementById('root'));
-    </script>
-    <!-- <p><a href="http://validator.w3.org/check?uri=referer">W3C validator</a></p> -->
-</body>
+                const waterUniforms = water.material.uniforms; // TODO: Look into uniforms
+                const folderWater = gui.addFolder('Water');
+                folderWater.add(waterUniforms.distortionScale, 'value', 0, 8, 0.1).name( 'distortionScale' );
+                folderWater.add(waterUniforms.size, 'value', 0.1, 10, 0.1).name( 'size' );
+                folderWater.open();
+                // TODO: Change the default size of water, look into performance affects as well
+                //       Worse case scenario, make minimum value 10 or something
+                // waterUniforms.size = 10; // does not work, crashes program i think
+
+                // Pretty sick built-in feature, was about to make my own auto rotate orbit logic
+                const folderOrbit = gui.addFolder('Orbit');
+                folderOrbit.add(controls, 'autoRotate').name('Enable Auto Rotate'); // Toggle auto-rotation
+                folderOrbit.add(controls, 'autoRotateSpeed', 0, 5, 0.1).name('autoRotateSpeed'); // Adjust auto-rotation speed
+                folderOrbit.open();
+
+                // Resize Listener
+                window.addEventListener('resize', onWindowResize);
+            }
+            
+            // Limits scene to initial window length and height? If so thats very convenient for me
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            // Game Engine function that's called every frame i think? 
+            function animate() {
+                requestAnimationFrame(animate);
+                // Constantly rotates cube and moves it up and down, pretty sick
+                // const time = performance.now() * 0.001;
+
+                // mesh.position.y = Math.sin( time ) * 20 + 5;
+                // mesh.rotation.x = time * 0.5;
+                // mesh.rotation.z = time * 0.51;
+                
+
+                
+                controls.update(); // Updates user changed attributes every frame 
+                water.material.uniforms['time'].value += 1.0 / 120.0; // 1 second / 120 frames - Maybe? Was originally 60, changed to 120 to make it slower 
+                renderer.render(scene, camera);
+                
+                // stats.update(); // Updates FPS counter per second
+            }
+        </script>
+    </body>
 </html>

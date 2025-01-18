@@ -64,7 +64,7 @@ const Landing = () => {
             {/* <CogContainer positionClass="top-60 left-10" /> */}
 
             {/* Main Content */}
-            <div className="relative flex justify-center items-center text-center w-full h-full z-10 text-white">
+            <div className="relative flex justify-center items-center text-center w-full h-full z-10 text-white hidden">
                 <div className="text-3xl">
                     <p className="text-7xl">Joshua Micah Sullivan</p>
                     <p>Incoming STEP Intern @ Google</p>
