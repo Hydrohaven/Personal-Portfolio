@@ -17,17 +17,17 @@ const Navbar = () => {
 
     return (
         //   top-0 left-0 transform -translate-y-full transition-transform duration-300
-        <nav className="navbar flex justify-between items-center bg-white border-gray-400 text-xs lg:text-xl border-b-2 px-14 py-4
-                        fixed -translate-y-full transition-transform duration-300top-0 left-0 w-full">
+        <nav className="navbar flex justify-between items-center text-xs border-black border-b-2 lg:text-xl px-14 py-4
+                        fixed -translate-y-full transition-transform duration-300top-0 left-0 w-full z-20">
             <div className="flex items-center space-x-4">
                 <a href="#">Joshua Micah Sullivan</a>
             </div>
 
             <div className="flex items-center space-x-4">
-                <a href="fluid.html">Home</a>
-                <a href="water.html">Experiences</a>
-                <a href="#">Projects</a>
-                <a href="#">Contact</a>
+                <a href="">About</a>
+                <a href="">Projects</a>
+                <a href="">Experiences</a>
+                <a href="">Contact</a>
             </div>
         </nav>
     );

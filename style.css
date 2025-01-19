@@ -11,7 +11,15 @@ html {
     scroll-behavior: smooth;
 }
 
-/* body {
-    background-color: #000f1e;
-    color: white;
-} */
+body {
+    overflow-x: hidden;
+    /* background: linear-gradient(to bottom, #8ecae6, #c4e4f5); */
+    background-color: #f4ebc5;
+    color: black;
+}
+
+.navbar {
+    /* background-color: #5ea8ca; */
+    background-color: #ccb99b; /* ccb99b */
+    /* background: linear-gradient(to bottom, #5ea8ca, #92c5df); */
+}

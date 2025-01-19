@@ -5,14 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Joshua Micah Sullivan">
         <meta name="description" content="My personal portfolio! Detailing my achievements and experiences!">
-        <title>Personal Portfolio</title>
+        <title>Joshua Micah Sullivan</title>
         <link rel="stylesheet" href="style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
         
         <!-- CDNs (Content Delivery Network) - Used to avoid installing packages and libraries -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
         <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        
         <!-- <script src="https://unpkg.com/lenis@1.1.19/dist/lenis.min.js"></script> -->
 
         <!-- Three.js Ocean -->
@@ -32,6 +34,12 @@
         <!-- React Imports -->
         <script type="text/babel" src="src/components/navbar.jsx"></script>
         <script type="text/babel" src="src/components/landing.jsx"></script>
+        <script type="text/babel" src="src/components/about.jsx"></script>
+        <script type="text/babel" src="src/components/projectcard.jsx"></script>
+        <script type="text/babel" src="src/components/projects.jsx"></script>
+        <script type="text/babel" src="src/components/experiences.jsx"></script>
+        <script type="text/babel" src="src/components/education.jsx"></script>
+        
 
         <!-- Rendered Divs -->
         <div id="ocean"></div> <!-- div that ocean is rendered into -->
@@ -45,35 +53,8 @@
                     <div>
                         <Navbar/>
                         <Landing/>
-
-                        <div className="m-10">
-                            <h1 className="text-4xl">Incoming STEP Intern @ Google</h1>
-                            <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
-                        </div>
-                        <div className="m-10">
-                            <h1 className="text-4xl">Incoming STEP Intern @ Google</h1>
-                            <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
-                        </div>
-                        <div className="m-10">
-                            <h1 className="text-4xl">Incoming STEP Intern @ Google</h1>
-                            <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
-                        </div>
-                        <div className="m-10">
-                            <h1 className="text-4xl">Incoming STEP Intern @ Google</h1>
-                            <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
-                        </div>
-                        <div className="m-10">
-                            <h1 className="text-4xl">Incoming STEP Intern @ Google</h1>
-                            <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
-                        </div>
-                        <div className="m-10">
-                            <h1 className="text-4xl">Incoming STEP Intern @ Google</h1>
-                            <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
-                        </div>
-                        <div className="m-10">
-                            <h1 className="text-4xl">Incoming STEP Intern @ Google</h1>
-                            <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
-                        </div>
+                        <About/>
+                        <Projects/>
                     </div>
                 );
             };

@@ -91,11 +91,19 @@ const Landing = () => {
             {/* Main Content */}
             <div className={`relative flex flex-col justify-center items-center text-center w-full h-full z-10 text-blue-100 transition-opacity duration-1000
                             ${(isVisible) ? 'opacity-100' : 'opacity-0 invisible'}`}>
-                <div className="text-xl md:text-3xl">
-                    <p className="text-3xl md:text-8xl font-bold">Joshua Micah Sullivan</p>
-                    <p className="text-shadow-lg">Incoming STEP Intern @ Google</p>
-                    <p>Computer Science @ UCI</p>
+                <div>
+                    <p className="text-3xl md:text-6xl xl:text-8xl font-bold">Joshua Micah Sullivan</p>
 
+                    <div className="text-2xl md:text-3xl xl:text-3xl my-4">
+                        <p>Incoming STEP Intern @ Google | CS @ UCI</p>
+                    </div>
+        
+                    <div className="flex flex-row justify-center items-center gap-10 text-3xl md:text-5xl">
+                        <a href="https://github.com/Hydrohaven?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/joshua-micah-sullivan/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://drive.google.com/file/d/1ACQxFPxWlqQdKhoYce4om2xWKIa-FSva/view" target="_blank"><i class="fas fa-file-alt"></i></a>
+                        <a href="mailto:joshee.sullivan@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
 
                 <img 
