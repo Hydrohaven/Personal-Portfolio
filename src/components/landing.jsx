@@ -60,7 +60,7 @@ const Landing = () => {
 
     useEffect(() => {
         const handleElevationUpdate = (event) => {
-            if (event.detail.elevation >= 3) {
+            if (event.detail.elevation >= 1) {
                 setIsVisible(true); // Show the element when elevation >= 5
             }
         };

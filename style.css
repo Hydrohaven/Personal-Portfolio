@@ -8,8 +8,10 @@
 html {
     /* overflow-y: scroll;  */
     scrollbar-gutter: stable;
+    scroll-behavior: smooth;
 }
 
 /* body {
-    font-family: 'Lexend Deca';
+    background-color: #000f1e;
+    color: white;
 } */

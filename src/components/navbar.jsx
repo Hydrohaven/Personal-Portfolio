@@ -4,7 +4,7 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             const navbar = document.querySelector(".navbar");
-            if (window.scrollY > window.innerHeight) {
+            if (window.scrollY >= window.innerHeight) {
                 navbar?.classList.remove("-translate-y-full");
             } else {
                 navbar?.classList.add("-translate-y-full");
@@ -17,8 +17,8 @@ const Navbar = () => {
 
     return (
         //   top-0 left-0 transform -translate-y-full transition-transform duration-300
-        <nav className="navbar flex justify-between items-center border-gray-400 text-xs lg:text-xl border-b-2 px-14 py-4
-                        fixed -translate-y-full top-0 left-0">
+        <nav className="navbar flex justify-between items-center bg-white border-gray-400 text-xs lg:text-xl border-b-2 px-14 py-4
+                        fixed -translate-y-full transition-transform duration-300top-0 left-0 w-full">
             <div className="flex items-center space-x-4">
                 <a href="#">Joshua Micah Sullivan</a>
             </div>

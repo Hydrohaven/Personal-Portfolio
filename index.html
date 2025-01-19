@@ -261,7 +261,7 @@
                 if (parameters.elevation < 183) { 
                     parameters.elevation += 0.007; 
 
-                    if (parameters.elevation >= 3 && nameFlag) {
+                    if (parameters.elevation >= 1 && nameFlag) {
                         const elevationEvent = new CustomEvent('elevationReached', {
                             detail: { elevation: parameters.elevation },
                         });
