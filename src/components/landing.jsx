@@ -107,7 +107,7 @@ const Landing = () => {
                 </div>
 
                 <img 
-                    src="img/downarrow.svg"
+                    src="img/icons/downarrow.svg"
                     alt="down arrow for portfolio" 
                     className="w-10 h-10 absolute bottom-24 animate-bounce cursor-pointer"
                     onClick={handleScrollDown}
