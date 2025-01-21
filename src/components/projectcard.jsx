@@ -2,7 +2,7 @@ const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}
     return (
         <div className={`border-2 rounded-lg border-black lg:h-96 pb-4 shadow-xl hover:scale-105 transition-all duration-300 ${(offset) ? 'mt-10' : ''}`}>
             {/* Image Section */}
-            <div className=" relative h-2/3 flex items-center justify-center">
+            <div className="relative h-2/3 flex items-center justify-center">
                 <img src={image} alt={alt} className="w-full h-full object-cover"/>
             </div>
             

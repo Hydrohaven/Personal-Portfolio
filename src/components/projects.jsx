@@ -16,6 +16,7 @@ const Projects = () => {
             image: "../img/portfolio.png",
             alt: "Personal Portfolio Image",
             href: "",
+            tooltip: "Ocean simulation courtesy of Three.js Official GitHub"
         },
         {
             title: 'μPlay',
@@ -41,7 +42,7 @@ const Projects = () => {
             image: "../img/firefly1.png",
             alt: "Lantern Light Image",
             href: "https://tomasii.itch.io/lantern-light",
-            tooltip: "Created for the Godot Wild Jam #72 with my bro Tomas Palmieri"
+            tooltip: "Godot Wild Jam #72 submission with my bro Tomas Palmieri"
         },
         {
             title: "Yt-emb",

@@ -34,6 +34,7 @@
         <script type="text/babel" src="src/components/about.jsx"></script>
         <script type="text/babel" src="src/components/projectcard.jsx"></script>
         <script type="text/babel" src="src/components/projects.jsx"></script>
+        <script type="text/babel" src="src/components/experiencecard.jsx"></script>
         <script type="text/babel" src="src/components/experiences.jsx"></script>
         <script type="text/babel" src="src/components/education.jsx"></script>
         
@@ -50,8 +51,9 @@
                     <div>
                         <Navbar/>
                         <Landing/>
-                        <About id="about"/>
-                        <Projects id="projects"/>
+                        <div id="about"><About/></div>
+                        <div id="projects"><Projects/></div>
+                        <div id="experiences"><Experiences/></div>
                     </div>
                 );
             };
