@@ -5,7 +5,7 @@ const About = () => {
                 <h1 className="text-4xl md:text-5xl font-bold md:mb-2">About Me</h1>
                 <div className="flex flex-col md:flex-row gap-6 text-xl mt-2 mx-4 p-4 md:p-8 shadow-xl border-2 border-black rounded-lg md:scale-105 md:hover:scale-110 transition-all duration-300">
                     <div className="flex justify-center items-center">
-                        <img src="../img/me.jpg" alt="A picture of myself!" className="rounded-lg"></img>
+                        <img src="./img/me.jpg" alt="A picture of myself!" className="rounded-lg"></img>
                     </div>
 
                     <div className="flex flex-col gap-4 text-xl px-4 md:px-0 pb-4 md:pb-0">

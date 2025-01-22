@@ -11,7 +11,7 @@ const Experiences = () => {
                         date="June 2025 - Sep. 2025"
                         location="TBD, United States"
                         techstack="Techstack TBD"
-                        logo="../img/logos/google.svg"
+                        logo="./img/logos/google.svg"
                         bullets={
                             [
                                 "Incoming Summer 2025!!!", 
@@ -25,7 +25,7 @@ const Experiences = () => {
                         date="Oct. 2024 - Present"
                         location="Irvine, CA"
                         techstack="React • JavaScript • PostgreSQL • Express.js • ChakraUI • HTML/CSS"
-                        logo="../img/logos/ctc-purple.svg"
+                        logo="./img/logos/ctc-purple.svg"
                         bullets={
                             [
                                 "Collaborated with a 14-person team to develop a platform for the non-profit organization Center Stage to promote and celebrate Chinese heritage in the US through traditional dance.", 
