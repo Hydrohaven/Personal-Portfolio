@@ -1,9 +1,9 @@
 const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}) => {
     return (
-        <div className={`border-2 rounded-lg border-black lg:h-96 pb-4 shadow-xl hover:scale-105 transition-all duration-300 ${(offset) ? 'mt-10' : ''}`}>
+        <div className={`border-2 rounded-lg border-black lg:h-96 pb-4 shadow-xl md:hover:scale-105 transition-all duration-300 ${(offset) ? 'mt-10' : ''}`}>
             {/* Image Section */}
             <div className="relative h-2/3 flex items-center justify-center">
-                <img src={image} alt={alt} className="w-full h-full object-cover"/>
+                <img src={image} alt={alt} className="rounded-t-md w-full h-full object-cover"/>
             </div>
             
             {/* Project Details */}
@@ -11,7 +11,7 @@ const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <h2 className="text-2xl font-semibold"> 
                         {title}
-                        <span class="relative group cursor-help">    
+                        <span class="relative group cursor-help hidden md:inline">    
                             {(tooltip) ? 
                                 <>
                                     <span class={`${(tooltip) ? 'underline decoration-dotted' : ''}`}>*</span>
@@ -25,7 +25,7 @@ const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}
                     <p className="italic text-gray-600 text-base">{date}</p>
                 </div>
 
-                <p className="flex justify-center md:justify-normal text-gray-700 mt-2">{techstack}</p>
+                <p className="flex text-center md:text-left justify-center md:justify-normal text-gray-700 mt-2">{techstack}</p>
             </div>
         </div>
     );

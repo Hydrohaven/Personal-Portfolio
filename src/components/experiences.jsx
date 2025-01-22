@@ -1,16 +1,16 @@
 const Experiences = () => {
     return (
         <div className="flex justify-center items-center">
-            <div className="inline-flex flex-col items-center gap-4 m-16 md:px-10 py-6 w-4/5">
-                <h1 className="text-5xl font-bold mb-6">Experiences</h1>
+            <div className="inline-flex flex-col items-center gap-4 md:m-16 md:px-10 py-6 w-4/5">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">Experiences</h1>
 
                 <div className="flex flex-col rounded-lg w-full gap-12">
                     <ExperienceCard
                         company="Google"
                         role="STEP Intern"
                         date="June 2025 - Sep. 2025"
-                        location="United States"
-                        techstack="Unknown"
+                        location="TBD, United States"
+                        techstack="Techstack TBD"
                         logo="../img/logos/google.svg"
                         bullets={
                             [

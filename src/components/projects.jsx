@@ -82,10 +82,11 @@ const Projects = () => {
 
     return (
         <div className="flex justify-center items-center">
-            <div className="inline-flex flex-col items-center gap-4 m-16 md:px-10 py-6 w-4/5">
-                <h1 className="text-5xl font-bold mb-6">Projects</h1>
+            <div className="inline-flex flex-col items-center gap-4 m-6 md:m-16 md:px-10 py-6 w-4/5">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">Projects</h1>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 w-full max-w-6xl">
+                {/* Normal View */}
+                <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-x-12 w-full max-w-6xl">
                     {/* Left Section */}
                     <div> 
                         {projects.map((projectItem, index) =>
@@ -106,7 +107,7 @@ const Projects = () => {
                     </div>
 
                     {/* Right Section */}
-                    <div className="sm: mt-10 lg:mt-16"> 
+                    <div className="sm:mt-10 lg:mt-16"> 
                         {projects.map((projectItem, index) =>
                             (index % 2 !== 0) ? (
                                 <ProjectCard
@@ -123,6 +124,26 @@ const Projects = () => {
                             ) : null
                         )}
                     </div>
+                </div>
+
+                {/* Mobile View */}
+                <div className="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-x-12 w-full max-w-6xl">
+                    <div>
+                        {projects.map((projectItem, index) => 
+                            (<ProjectCard
+                                key={index}
+                                title={projectItem.title}
+                                date={projectItem.date}
+                                techstack={projectItem.techstack}
+                                image={projectItem.image}
+                                alt={projectItem.alt}
+                                href={projectItem.href}
+                                offset={index !== 0} // first item in right is second bro
+                                tooltip={projectItem.tooltip}
+                            />)
+                        )}
+                    </div>
+                    
                 </div>
             </div>
         </div>

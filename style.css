@@ -16,6 +16,7 @@ body {
     /* background: linear-gradient(to bottom, #8ecae6, #c4e4f5); */
     background-color: #f4ebc5;
     color: black;
+    /* max-width: max-content; */
 }
 
 .navbar {

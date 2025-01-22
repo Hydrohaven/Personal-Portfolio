@@ -77,6 +77,8 @@
             let container, camera, scene, renderer, water, sun;
             let stats, controls, mesh;
             let sky, parameters, sceneEnv, renderTarget, pmremGenerator;
+            let previousTime = performance.now() * 0.001;
+
 
             init();
             animate();
@@ -112,13 +114,15 @@
                 color = Number('0x'+color); // color is a number (hex number), not a string
 
                 water = new Water(waterGeometry, {
-                    textureWidth: 512,
-                    textureHeight: 512,
+                    textureWidth: 64,
+                    textureHeight: 64,
                     waterNormals: new THREE.TextureLoader().load(
                         // weird image used for water textures, could possibly replace with different textures?
                         waterShaders[0], 
                         function (texture) {
                             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                            texture.anisotropy = 1; // Lower anisotropy for better performance
+                            texture.minFilter = THREE.LinearFilter; // use less expensive filtering
                         }
                     ),
                     sunDirection: new THREE.Vector3(),
@@ -127,7 +131,7 @@
                     distortionScale: 3.7, // = how much water distorts objects reflected on it (aka. will make cube more blurry)
                     fog: scene.fog !== undefined, // TODO: look into this, no clue what this means
                 });
-
+                
                 water.rotation.x = -Math.PI / 2; // TODO: play around with this, not sure how this works
                 scene.add(water);
 
@@ -167,7 +171,7 @@
                 controls.minDistance = 40.0; 
                 controls.maxDistance = 200.0;
                 controls.autoRotate = true; // Default true for the sake of user experience
-                controls.autoRotateSpeed = 0.2; // Default is 2.0
+                controls.autoRotateSpeed = 0.2; // Default is 2.0, 0.5 looks good on my laptop, idk about other devices
                 controls.update();
 
                 if (admin) {
@@ -232,14 +236,12 @@
             let nameFlag = true;
             function animate() {
                 requestAnimationFrame(animate);
-                // Constantly rotates cube and moves it up and down, pretty sick
-                // const time = performance.now() * 0.001;
+                const currentTime = performance.now() * 0.001;
+                const deltaTime = currentTime - previousTime;
+                previousTime = currentTime;
 
-                // mesh.position.y = Math.sin( time ) * 20 + 5;
-                // mesh.rotation.x = time * 0.5;
-                // mesh.rotation.z = time * 0.51;
                 if (parameters.elevation < 183) { 
-                    parameters.elevation += 0.007; 
+                    parameters.elevation += 1 * deltaTime; // multiply by 60 to normalize across 60 fps 
 
                     if (parameters.elevation >= 1 && nameFlag) {
                         const elevationEvent = new CustomEvent('elevationReached', {
@@ -253,8 +255,9 @@
                 }
                 updateSun();
                 
+                controls.autoRotateSpeed = 15 * deltaTime;
                 controls.update(); // Updates user changed attributes every frame 
-                water.material.uniforms['time'].value += 1.0 / 120.0; // 1 second / 120 frames - Maybe? Was originally 60, changed to 120 to make it slower 
+                water.material.uniforms['time'].value += deltaTime; // 1 second / 120 frames - Maybe? Was originally 60, changed to 120 to make it slower 
                 renderer.render(scene, camera);
                 
                 // stats.update(); // Updates FPS counter per second
