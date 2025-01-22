@@ -86,7 +86,7 @@ const Projects = () => {
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">Projects</h1>
 
                 {/* Normal View */}
-                <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 gap-x-12 w-full max-w-6xl">
+                <div className="hidden md:grid grid-cols-1 xl:grid-cols-2 gap-x-12 w-full max-w-6xl">
                     {/* Left Section */}
                     <div> 
                         {projects.map((projectItem, index) =>
@@ -127,7 +127,7 @@ const Projects = () => {
                 </div>
 
                 {/* Mobile View */}
-                <div className="grid md:hidden grid-cols-1 sm:grid-cols-2 gap-x-12 w-full max-w-6xl">
+                <div className="grid md:hidden grid-cols-1 gap-x-12 w-full max-w-6xl">
                     <div>
                         {projects.map((projectItem, index) => 
                             (<ProjectCard
