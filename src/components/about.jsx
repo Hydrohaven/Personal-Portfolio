@@ -8,7 +8,7 @@ const About = () => {
                         <img src="./img/me.jpg" alt="A picture of myself!" className="rounded-lg"></img>
                     </div>
 
-                    <div className="flex flex-col gap-4 text-xl px-4 md:px-0 pb-4 md:pb-0">
+                    <div className="flex flex-col gap-4 text-base px-4 md:px-0 pb-4 md:pb-0">
                         <p>
                             Yo I'm Josh, a second year at UCI majoring in CS and specializing in Systems Programming.
                             All my projects stem from some sort of issue I encounter, leading me to create an application to solve it,

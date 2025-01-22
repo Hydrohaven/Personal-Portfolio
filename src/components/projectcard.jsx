@@ -1,13 +1,13 @@
 const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}) => {
     return (
-        <div className={`border-2 rounded-lg border-black lg:h-96 pb-4 shadow-xl md:hover:scale-105 transition-all duration-300 ${(offset) ? 'mt-10' : ''}`}>
+        <div className={`border-2 rounded-lg border-black lg:h-96 shadow-xl md:hover:scale-105 transition-all duration-300 ${(offset) ? 'mt-10' : ''}`}>
             {/* Image Section */}
-            <div className="relative h-2/3 flex items-center justify-center">
+            <div className="relative h-3/5 flex items-center justify-center">
                 <img src={image} alt={alt} className="rounded-t-md w-full h-full object-cover"/>
             </div>
             
             {/* Project Details */}
-            <div className="border-black border-t-2 p-6 h-auto">
+            <div className="border-black border-t-2 p-6 lg:pb-0 h-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <h2 className="text-2xl font-semibold"> 
                         {title}
