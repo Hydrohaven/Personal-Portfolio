@@ -36,8 +36,6 @@ Talking to classmates about class material, assignment requirements, etc. is a g
 
 (c) Advanced features
 - Created a more complex page layout, implementing a navbar
-- Used front-end frameworks like React and TailwindCSS
-- Incorporating 3D model rendering with WebGL based libraries like Three.js
 
 
 3. How long, in hours, did it take you to complete this assignment?
