@@ -10,40 +10,55 @@ Talking to classmates about class material, assignment requirements, etc. is a g
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
-*/10
-- */1 Readme
-- */2 Basic HTML content
-- */1 Basic CSS styling
-- */1 Advanced feature
-- */2 Responsive layout
-- */1 Passes validation checks
-- */2 Embraces spirit of the assignment
+10/10
+- 1/1 Readme
+- 2/2 Basic HTML content
+- 1/1 Basic CSS styling
+- 1/1 Advanced feature
+- 2/2 Responsive layout
+- 1/1 Passes validation checks
+- 2/2 Embraces spirit of the assignment
 
 2. What (a) basic features, (b) CSS features, and (c) advanced features did you include in your portfolio?
 
 (a) Basic features
-
+- At least one image with descriptibe alt attributes across each section of the portfolio
+- Appropriate headings and paragraph text for my Projects and Experiences
+- Links to external pages such as my GitHub, LinkedIn, and Resume
+- Semantic HTML tags like nav and footer
+- Custom GitHub, LinkedIn, Resume, and Mail icons from FontAwesome
 
 
 (b) CSS features
-
+- Modified the padding and margins of various elements
+- Modified text color and background colors to follow a palette and theme (I went with a beach/ocean theme)
 
 
 (c) Advanced features
-
+- Created a more complex page layout, implementing a navbar
+- Used front-end frameworks like React and TailwindCSS
+- Incorporating 3D model rendering with WebGL based libraries like Three.js
 
 
 3. How long, in hours, did it take you to complete this assignment?
-
+15-20 hours
 
 
 4. What online resources did you consult when completing this assignment? (list specific URLs, describe queries to Generative AI, or use of AI-based code completion)
-
+- I used the Ocean Simulation example from the official Three.js GitHub located here https://threejs.org/examples/webgl_shaders_ocean.html and https://github.com/Sean-Bradley/three.js
+- Three.js official documentation to understand the library https://threejs.org/docs/
+- TailwindCSS official documentation https://tailwindcss.com/docs/
+- Many generative AI queries (ChatGPT) to understand the many innerworkings between React, TailwindCSS, and Three.js
+  - Queries ranged from topics of how to implement certain flex layouts using TailwindCSS
+  - Understanding various elements of Three.js code
+  - Understanding how to decrease the resolution of 3D renders, and thus increasing computer performance 
 
 
 5. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
-
+- A fellow student, Nathan Henry Ong, for guidance using TailwindCSS and understanding project instructions
+- My girlfriend, Margaret Sara Galvez, for general input on my designs and styling
+- My siblings, for general input on designs as well
 
 
 6. Is there anything special we need to know in order to run your code?
-
+- Nope! No downloads necessary as I entirely utilize CDNs. Cloning my repo and running index.html should be enough
