@@ -60,3 +60,9 @@ Talking to classmates about class material, assignment requirements, etc. is a g
 
 6. Is there anything special we need to know in order to run your code?
 - Nope! No downloads necessary as I entirely utilize CDNs. Cloning my repo and running index.html should be enough
+
+VALIDITY EXPLANATION
+The CSS validity checker is flagging things it shouldn't
+  1. It says "scrollbar-gutter: stable" doesn't exist when it does as proof on the mdn web docs https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter
+     It probably is not up to date as scrollbar-gutter I believe was added recently in December 2024.
+  2. My font-awesome import creates css animation that get flagged by the validity checker. Even though they are fine as they are part of a library in the project instructions.
