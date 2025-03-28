@@ -1,19 +1,20 @@
-const { useEffect } = React;
+"use client"
+import { useEffect } from "react";
 
-const Navbar = () => {
-    useEffect(() => {
-        const navbarScroll = () => {
-            const navbar = document.querySelector(".navbar");
-            if (window.scrollY >= window.innerHeight) {
-                navbar?.classList.remove("-translate-y-full");
-            } else {
-                navbar?.classList.add("-translate-y-full");
-            }
-        };
+export const Navbar = () => {
+  useEffect(() => {
+    const navbarScroll = () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY >= window.innerHeight) {
+        navbar?.classList.remove("-translate-y-full");
+      } else {
+        navbar?.classList.add("-translate-y-full");
+      }
+    };
 
-        window.addEventListener("scroll", navbarScroll);
-        return () => window.removeEventListener("scroll", navbarScroll);
-    }, []);
+    window.addEventListener("scroll", navbarScroll);
+    return () => window.removeEventListener("scroll", navbarScroll);
+  }, []);
 
     return (
         //   top-0 left-0 transform -translate-y-full transition-transform duration-300
@@ -33,5 +34,3 @@ const Navbar = () => {
         </nav>
     );
 };
-
-// export default Navbar;

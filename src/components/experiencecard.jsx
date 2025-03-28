@@ -1,4 +1,4 @@
-const ExperienceCard = ({company, role, date, location, techstack, logo, alt, bullets}) => {
+export const ExperienceCard = ({company, role, date, location, techstack, logo, alt, bullets}) => {
     return (
         <div className="flex flex-col lg:flex-row items-center p-6 lg:p-12 shadow-xl border-2 border-black rounded-lg lg:hover:scale-105 transition-all duration-300">
             {/* Logo Section */}

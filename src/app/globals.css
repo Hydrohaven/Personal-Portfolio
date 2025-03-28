@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca');
+@import "tailwindcss";
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+:root {
+    --font: "Lexend Deca";
+    --izone: #ef539d;
+}
+
+html {
+    /* overflow-y: scroll;  */
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    /* background: linear-gradient(to bottom, #8ecae6, #c4e4f5); */
+    background-color: #f4ebc5;
+    color: black;
+    /* max-width: max-content; */
+}
+
+.navbar {
+    /* background-color: #5ea8ca; */
+    background-color: #ccb99b; /* ccb99b */
+    /* background: linear-gradient(to bottom, #5ea8ca, #92c5df); */
+}
+
+.footer {
+    background-color: #ccb99b;
+}

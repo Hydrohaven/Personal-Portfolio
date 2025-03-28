@@ -1,4 +1,4 @@
-const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}) => {
+export const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}) => {
     return (
         <div className={`border-2 rounded-lg border-black lg:h-96 shadow-xl md:hover:scale-105 transition-all duration-300 ${(offset) ? 'mt-10' : ''}`}>
             {/* Image Section */}
@@ -11,15 +11,15 @@ const ProjectCard = ({title, date, techstack, image, alt, href, offset, tooltip}
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <h2 className="text-2xl font-semibold"> 
                         {title}
-                        <span class="relative group cursor-help hidden md:inline">    
+                        <span className="relative group cursor-help hidden md:inline">    
                             {(tooltip) ? 
                                 <>
-                                    <span class={`${(tooltip) ? 'underline decoration-dotted' : ''}`}>*</span>
-                                    <span class="absolute left-0 bottom-6 hidden group-hover:block w-max bg-gray-800 text-white text-xs rounded-md p-2">{tooltip}</span>
+                                    <span className={`${(tooltip) ? 'underline decoration-dotted' : ''}`}>*</span>
+                                    <span className="absolute left-0 bottom-6 hidden group-hover:block w-max bg-gray-800 text-white text-xs rounded-md p-2">{tooltip}</span>
                                 </> : null
                             }
                         </span>
-                        <a href={href} target="_blank"> <i class="fas fa-external-link"></i></a>
+                        <a href={href} target="_blank"> <i className="fas fa-external-link"></i></a>
                     </h2>
 
                     <p className="italic text-gray-600 text-base">{date}</p>

@@ -1,11 +1,12 @@
-const { useEffect, useState } = React;
+"use client" // useEffect only works in Client components???
+import { useEffect, useState } from "react";
 
 const generateUniqueId = (() => {
     let count = 0;
     return () => `cog-${count++}`;
 })();
 
-const Landing = () => {
+export const Landing = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     const CogContainer = ({ positionClass }) => {
@@ -95,14 +96,14 @@ const Landing = () => {
                     <p className="text-3xl md:text-6xl xl:text-8xl font-bold">Joshua Micah Sullivan</p>
 
                     <div className="text-2xl md:text-3xl xl:text-3xl my-4">
-                        <p>Incoming STEP Intern @ Google | CS @ UCI</p>
+                        <p>Incoming Associate SDE @ Google | CS @ UCI</p>
                     </div>
         
                     <div className="flex flex-row justify-center items-center gap-10 text-3xl md:text-5xl">
-                        <a href="https://github.com/Hydrohaven" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/joshua-micah-sullivan/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://drive.google.com/file/d/1ACQxFPxWlqQdKhoYce4om2xWKIa-FSva/view" target="_blank"><i class="fas fa-file-alt"></i></a>
-                        <a href="mailto:joshee.sullivan@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/Hydrohaven" target="_blank"><i className="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/joshua-micah-sullivan/" target="_blank"><i className="fab fa-linkedin"></i></a>
+                        <a href="https://drive.google.com/file/d/1ACQxFPxWlqQdKhoYce4om2xWKIa-FSva/view" target="_blank"><i className="fas fa-file-alt"></i></a>
+                        <a href="mailto:joshee.sullivan@gmail.com"><i className="fas fa-envelope"></i></a>
                     </div>
                 </div>
 

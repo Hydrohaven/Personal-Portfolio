@@ -1,4 +1,6 @@
-const Projects = () => {
+import { ProjectCard } from "./projectcard"
+
+export const Projects = () => {
     /* Template 
     title: "",
     date: "",
